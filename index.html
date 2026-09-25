@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NutriCare | خديجة بن علال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --green:#087f55;
+  --green-dark:#05593c;
+  --green2:#0ca66d;
+  --light:#edf8f2;
+  --orange:#f59b45;
+  --ink:#0e241e;          /* نص رئيسي عالي التباين وواضح تماماً */
+  --ink-soft:#1f3e35;     /* نص ثانوي عالي الوضوح */
+  --muted:#3c564d;        /* تباين ممتاز للقراءة المريحة */
+  --bg:#f4f8f6;
+  --white:#ffffff;
+  --line:#dce9e3;
+  --navy:#0d252d;
+  --shadow:0 14px 38px rgba(14,36,30,.07);
+  --glass-bg:rgba(255, 255, 255, 0.88);
+  --glass-border:rgba(255, 255, 255, 0.7);
+}
+
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Cairo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3,h4,h5,h6{color:var(--ink);font-weight:800}
+.section-head h2{color:var(--ink);font-size:32px;margin:0 0 6px}
+.section-head p{color:var(--muted);font-size:15px;margin:0;font-weight:500}
+button,input,select,textarea{font:inherit} button{cursor:pointer;border:0}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+
+/* Topbar */
+.topbar{height:80px;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:90;display:flex;align-items:center;box-shadow:0 4px 20px rgba(10,35,28,.04)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:22px;width:100%}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:24px;color:var(--green-dark)}
+.logo-mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#0ca66d,#066e4a);display:grid;place-items:center;color:#fff;font-size:20px;box-shadow:0 6px 16px rgba(8,127,85,.25)}
+.navlinks{display:flex;gap:26px;align-items:center;color:var(--ink-soft);font-size:15px;font-weight:700}
+.navlinks a{transition:.2s}
+.navlinks a:hover,.navlinks a.active{color:var(--green)}
+.actions{display:flex;align-items:center;gap:12px}
+.header-search{display:flex;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:0 12px;width:220px;transition:.3s}
+.header-search:focus-within{width:270px;border-color:var(--green);box-shadow:0 0 0 4px rgba(8,127,85,.1)}
+.header-search i{color:var(--muted);font-size:13px}
+.header-search input{border:0;outline:0;background:transparent;padding:10px 8px;width:100%;font-size:13px;color:var(--ink);font-weight:600}
+.lang-switch{width:46px;height:40px;border-radius:12px;background:var(--light);color:var(--green-dark);border:1.5px solid #cce8dc;font-weight:800;transition:.25s}
+.lang-switch:hover{background:var(--green);color:#fff}
+.menu-toggle{width:42px;height:42px;border-radius:12px;background:var(--light);color:var(--green);display:none;font-size:18px}
+
+/* Hero Section with Perfect Contrast */
+.hero{min-height:580px;background:linear-gradient(90deg, rgba(6,56,40,0.96) 0%, rgba(8,89,62,0.88) 40%, rgba(8,127,85,0.48) 75%, rgba(6,56,40,0.2) 100%), url('https://i.ibb.co/nF7G1Sk/file-00000000aa2c820ab20af740df36e8a7.png') center right/cover;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-content{max-width:590px;padding:75px 0;color:#fff;position:relative;z-index:2}
+.hero h1{font-size:46px;line-height:1.25;margin:0 0 16px;color:#ffffff;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+.hero h1 span{color:#95f4c5;text-shadow:0 3px 20px rgba(0,0,0,.5)}
+.hero p{color:#f0fbf6;line-height:2;font-size:16px;margin:0 0 28px;text-shadow:0 2px 10px rgba(0,0,0,.45);font-weight:500}
+.hero p strong{color:#ffffff;font-weight:800}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.primary{background:var(--green);color:#ffffff!important;padding:13px 24px;border-radius:14px;font-weight:800;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(8,127,85,.28);transition:.25s}
+.primary:hover{background:#066a46;transform:translateY(-2px);box-shadow:0 12px 28px rgba(8,127,85,.35)}
+.hero .primary{background:#ffffff;color:var(--green-dark)!important;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.hero .primary:hover{background:#f3fcf7}
+.hero .outline{background:rgba(255,255,255,0.12);color:#ffffff!important;border:1.5px solid rgba(255,255,255,0.7);padding:12px 22px;border-radius:14px;font-weight:800;backdrop-filter:blur(10px);transition:.25s}
+.hero .outline:hover{background:rgba(255,255,255,0.22);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:35px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.2);padding-top:22px}
+.hero-stat strong{display:block;font-size:26px;color:#ffffff;font-weight:900;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.hero-stat small{color:#e0f5eb;font-weight:600;font-size:13px}
+
+/* Mini Bar Services */
+.auto-services{background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+.auto-track{display:flex;direction:ltr;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
+.auto-slide{min-width:100%;direction:rtl;padding:18px 0}
+.auto-slide-inner{display:flex;align-items:center;justify-content:center;gap:30px}
+.auto-service{display:flex;align-items:center;gap:14px;padding:6px 24px;border-left:1px solid var(--line)}
+.auto-service:last-child{border-left:0}
+.auto-service-icon{width:46px;height:46px;border-radius:14px;background:var(--light);color:var(--green);display:grid;place-items:center;font-size:19px}
+.auto-service h4{margin:0 0 2px;color:var(--ink);font-size:14px;font-weight:800}
+.auto-service p{margin:0;color:var(--muted);font-size:12px;font-weight:600}
+
+/* Distinctive Single-Row Auto-Slider Services Section */
+.services-highlight{padding:80px 0;background:linear-gradient(180deg,#f4f8f6 0%,#eaf4ef 100%);position:relative;overflow:hidden}
+.services-carousel-wrap{position:relative;margin-top:35px;overflow:hidden;padding:15px 4px}
+.services-track{display:flex;gap:22px;transition:transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);direction:ltr;will-change:transform}
+.service-card-single{
+  flex:0 0 calc((100% - 44px) / 3);
+  min-width:calc((100% - 44px) / 3);
+  background:#ffffff;
+  border-radius:24px;
+  padding:32px 26px;
+  border:1.5px solid #dcece3;
+  box-shadow:0 12px 32px rgba(12,45,35,0.06);
+  direction:rtl;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position:relative;
+  overflow:hidden;
+}
+.service-card-single:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,166,109,0.08) 0%,transparent 60%);opacity:0;transition:.35s}
+.service-card-single:hover{transform:translateY(-8px);box-shadow:0 22px 45px rgba(8,127,85,0.15);border-color:#a8e0c8}
+.service-card-single:hover:before{opacity:1}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;position:relative;z-index:2}
+.sc-icon{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#e5f8ee,#d0f1e1);color:var(--green-dark);display:grid;place-items:center;font-size:24px;box-shadow:0 6px 18px rgba(8,127,85,.12);transition:.3s}
+.service-card-single:hover .sc-icon{background:var(--green);color:#fff;transform:scale(1.05) rotate(4deg)}
+.sc-badge{background:#eef7f3;color:var(--green-dark);font-size:11px;font-weight:800;padding:6px 12px;border-radius:30px;border:1px solid #d3eee1}
+.sc-content{position:relative;z-index:2;flex:1}
+.sc-content h3{font-size:20px;margin:0 0 10px;color:var(--ink);font-weight:800}
+.sc-content p{color:var(--muted);font-size:13.5px;line-height:1.9;margin:0;font-weight:600}
+.sc-action{margin-top:24px;padding-top:16px;border-top:1px dashed #e2ede8;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+.sc-link{font-size:13px;font-weight:800;color:var(--green-dark);display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.service-card-single:hover .sc-link{gap:10px;color:var(--green)}
+.services-slider-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:30px}
+.slider-arrow-btn{width:44px;height:44px;border-radius:14px;background:#ffffff;color:var(--green-dark);border:1.5px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.04);display:grid;place-items:center;font-size:16px;transition:.25s}
+.slider-arrow-btn:hover{background:var(--green);color:#fff;border-color:var(--green);transform:scale(1.06)}
+.slider-dots-line{display:flex;align-items:center;gap:6px}
+.slider-dots-line span{width:9px;height:9px;border-radius:10px;background:#c3dcd0;transition:.3s}
+.slider-dots-line span.active{width:28px;background:var(--green)}
+
+/* Ad Banner */
+.ad-banner{border-radius:24px;background:linear-gradient(130deg,#045437 0%,#087f55 55%,#0ca66d 100%);padding:36px 45px;color:#ffffff;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 18px 45px rgba(8,127,85,.22);border:1px solid rgba(255,255,255,0.25)}
+.ad-banner:after{content:'%';position:absolute;font-size:180px;font-weight:900;left:25px;top:-45px;color:rgba(255,255,255,0.08);line-height:1;pointer-events:none}
+.ad-copy{max-width:700px;position:relative;z-index:2}
+.ad-copy small{display:inline-block;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);padding:6px 14px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:.3px;color:#fff}
+.ad-copy h3{font-size:clamp(22px,3vw,32px);margin:12px 0 8px;color:#ffffff;font-weight:900;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.ad-copy p{margin:0;color:#f0fbf6;font-size:14px;line-height:1.8;font-weight:500}
+.ad-cta-box{position:relative;z-index:2;text-align:center}
+.ad-badge{display:inline-block;background:#ffffff;color:var(--green-dark);padding:9px 18px;border-radius:30px;font-weight:900;font-size:14px;box-shadow:0 8px 20px rgba(0,0,0,.15);margin-bottom:12px}
+.ad-banner .primary{background:#ffffff;color:var(--green-dark)!important;box-shadow:0 10px 25px rgba(0,0,0,.15)}
+.ad-banner .primary:hover{background:#edf9f3}
+
+/* About Specialist Section */
+.section{padding:75px 0}
+.about-card{display:grid;grid-template-columns:1fr 1.15fr;gap:35px;background:#ffffff;border:1.5px solid var(--line);border-radius:26px;padding:25px;box-shadow:var(--shadow);align-items:center}
+.about-photo{min-height:380px;border-radius:20px;background:url('https://i.ibb.co/nF7G1Sk/file-00000000aa2c820ab20af740df36e8a7.png') center/cover}
+.about-text{padding:10px}
+.about-text small{color:var(--green);font-weight:800;font-size:14px;text-transform:uppercase}
+.about-text h2{font-size:34px;margin:6px 0 14px;color:var(--ink)}
+.about-text p{color:var(--muted);line-height:2;font-size:14.5px;font-weight:600}
+.about-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.about-list div{background:#f3f9f6;padding:12px 14px;border-radius:14px;font-size:13px;font-weight:700;color:var(--ink-soft);display:flex;align-items:center;gap:8px;border:1px solid #e1efe8}
+.about-list i{color:var(--green);font-size:15px}
+
+/* Courses & Peek Slider */
+.course-carousel{position:relative;overflow:hidden;padding:10px 0 25px}
+.course-track{display:flex;gap:20px;direction:ltr;align-items:stretch}
+.course-slide{min-width:76%;direction:rtl;opacity:.6;transform:scale(.95);transition:.45s ease}
+.course-slide.is-active{opacity:1;transform:scale(1)}
+.card{background:#ffffff;border:1.5px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(10,35,28,.04);height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.card-img{height:200px;background-size:cover;background-position:center;position:relative}
+.card-body{padding:24px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.card h3{margin:0 0 10px;font-size:19px;color:var(--ink)}
+.card p{color:var(--muted);font-size:13.5px;line-height:1.9;margin:0 0 18px;font-weight:600}
+.tag{position:absolute;top:15px;right:15px;background:#ffffff;padding:6px 14px;border-radius:30px;font-size:11px;color:var(--green-dark);font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.course-women-img{background-image:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=90')}
+.course-women-img2{background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=90')}
+.course-women-img3{background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=90')}
+.course-controls{display:flex;gap:10px}
+.course-arrow{width:46px;height:46px;border-radius:14px;background:#fff;border:1.5px solid var(--line);color:var(--green-dark);display:grid;place-items:center;font-size:16px;box-shadow:0 6px 16px rgba(0,0,0,.04);transition:.25s}
+.course-arrow:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.course-dots{display:flex;justify-content:center;gap:7px;margin-top:10px}
+.course-dots span{width:8px;height:8px;border-radius:10px;background:#c3dcd0;transition:.3s}
+.course-dots span.active{width:26px;background:var(--green)}
+
+/* Articles & Search */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.article-img{height:165px}
+.article1{background-image:url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1000&q=85')}
+.article2{background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=85')}
+.article3{background-image:url('https://images.unsplash.com/photo-1505576633757-0ac1084af824?auto=format&fit=crop&w=1000&q=85')}
+.searchbox{display:flex;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:8px;margin-bottom:30px;box-shadow:var(--shadow)}
+.searchbox input{flex:1;border:0;outline:0;padding:12px 16px;background:transparent;color:var(--ink);font-weight:600}
+.searchbox button{background:var(--green);color:#fff;border-radius:12px;padding:0 24px;font-size:16px}
+
+/* Map Section */
+.map-section{background:#eaf4ef}
+.map-grid{display:grid;grid-template-columns:.85fr 1.35fr;gap:25px}
+.location-card{background:#ffffff;border-radius:24px;padding:32px;box-shadow:var(--shadow);border:1.5px solid var(--line)}
+.location-item{display:flex;gap:15px;margin:22px 0;align-items:flex-start}
+.location-item i{width:44px;height:44px;border-radius:14px;background:var(--light);color:var(--green-dark);display:grid;place-items:center;font-size:18px;flex:none}
+.location-item b{display:block;font-size:14px;color:var(--ink);margin-bottom:3px}
+.location-item span{color:var(--muted);font-size:13px;font-weight:600}
+.map-frame{min-height:360px;border:0;width:100%;height:100%;border-radius:24px;box-shadow:var(--shadow);border:1.5px solid var(--line)}
+
+/* Bottom CTA */
+.cta{border-radius:28px;overflow:hidden;background:linear-gradient(90deg,rgba(4,64,44,0.96) 0%,rgba(8,127,85,0.85) 60%,rgba(8,127,85,0.6) 100%),url('https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=1400&q=85') center/cover;display:flex;align-items:center;padding:50px;color:#ffffff;box-shadow:0 20px 50px rgba(6,56,40,.22)}
+.cta h2{margin:0 0 10px;font-size:32px;color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+.cta p{color:#effbf5;margin:0 0 24px;font-size:15px;font-weight:500}
+.cta .primary{background:#ffffff;color:var(--green-dark)!important}
+
+/* Footer with High Contrast */
+footer{background:#0b211a;color:#d3e5df;padding:60px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+.footer-title{font-size:20px;font-weight:900;margin-bottom:18px;color:#ffffff}
+.footer p{color:#b6d2ca;font-size:13.5px;line-height:2;font-weight:500}
+.footer a{color:#b6d2ca;font-size:13.5px;line-height:2.2;font-weight:600;transition:.2s}
+.footer a:hover{color:#3dd69b}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{width:40px;height:40px;border-radius:12px;background:#15372d;display:grid;place-items:center;color:#ffffff;transition:.25s}
+.social a:hover{background:var(--green);color:#fff;transform:translateY(-3px)}
+.copy{border-top:1px solid #1c4236;margin-top:40px;padding-top:22px;text-align:center;color:#8caea4;font-size:13px;font-weight:600}
+
+/* WhatsApp Float */
+.whatsapp-float{position:fixed;right:24px;bottom:24px;z-index:95;width:60px;height:60px;border-radius:50%;background:#22c55e;color:#fff;display:grid;place-items:center;box-shadow:0 14px 32px rgba(34,197,94,.35);font-size:30px;transition:.3s}
+.whatsapp-float:hover{transform:translateY(-4px) scale(1.05)}
+.whatsapp-float span{position:absolute;right:72px;white-space:nowrap;background:#ffffff;color:var(--ink);border:1px solid var(--line);padding:8px 14px;border-radius:12px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transform:translateX(10px);transition:.25s;box-shadow:var(--shadow)}
+.whatsapp-float:hover span{opacity:1;transform:none}
+
+/* Ultra-Calm Glassmorphic Booking Modal */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(7, 26, 20, 0.65);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  z-index:200;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  opacity:0;
+  transition:opacity 0.35s ease;
+}
+.modal.show{display:flex;opacity:1}
+.modal-box{
+  background:linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(247, 252, 250, 0.92) 100%);
+  width:min(660px, 100%);
+  max-height:92vh;
+  overflow-y:auto;
+  border-radius:32px;
+  padding:36px;
+  position:relative;
+  box-shadow:0 35px 80px rgba(5, 29, 21, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  border:1px solid rgba(12, 166, 109, 0.18);
+  transform:scale(0.94) translateY(18px);
+  transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal.show .modal-box{transform:scale(1) translateY(0)}
+.close-glass{
+  position:absolute;
+  left:22px;
+  top:22px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:rgba(235, 246, 241, 0.85);
+  color:var(--ink-soft);
+  display:grid;
+  place-items:center;
+  font-size:18px;
+  transition:all .25s ease;
+}
+.close-glass:hover{background:#e85b64;color:#fff;transform:rotate(90deg)}
+.modal-header-calm{text-align:center;margin-bottom:28px}
+.modal-header-calm .badge-calm{display:inline-flex;align-items:center;gap:6px;background:var(--light);color:var(--green-dark);padding:6px 14px;border-radius:30px;font-size:12px;font-weight:800;margin-bottom:8px}
+.modal-header-calm h2{margin:0;font-size:26px;color:var(--ink);font-weight:900}
+.modal-header-calm p{margin:6px 0 0;color:var(--muted);font-size:13px;font-weight:600}
+
+/* Calming Stepper */
+.calm-steps{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:30px}
+.calm-step-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted)}
+.calm-step-item.active{color:var(--green-dark);font-weight:800}
+.calm-step-num{width:30px;height:30px;border-radius:50%;background:#e5f0eb;color:var(--muted);display:grid;place-items:center;font-size:12px;font-weight:800;transition:.3s}
+.calm-step-item.active .calm-step-num{background:var(--green);color:#fff;box-shadow:0 4px 12px rgba(8,127,85,.3)}
+.calm-step-line{width:36px;height:2px;background:#dce9e3;border-radius:2px}
+
+/* Calm Input Fields */
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:12.5px;font-weight:800;color:var(--ink-soft);display:flex;align-items:center;gap:6px}
+.field label i{color:var(--green);font-size:13px}
+.field input,.field select,.field textarea{
+  width:100%;
+  border:1.5px solid #d4e7de;
+  border-radius:15px;
+  padding:12px 14px;
+  outline:0;
+  background:rgba(255,255,255,0.8);
+  color:var(--ink);
+  font-weight:600;
+  font-size:13px;
+  transition:all 0.25s ease;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  background:#ffffff;
+  border-color:var(--green);
+  box-shadow:0 0 0 4px rgba(8,127,85,0.12);
+}
+.field textarea{min-height:95px;resize:vertical}
+
+/* Time Picker Calm */
+.times-head{font-size:13px;font-weight:800;color:var(--ink-soft);margin:20px 0 10px;display:flex;align-items:center;gap:6px}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.time{padding:10px 6px;background:rgba(240, 248, 244, 0.85);border:1.5px solid #d4ebdf;border-radius:12px;color:var(--ink-soft);font-weight:700;font-size:13px;transition:.25s;text-align:center}
+.time:hover{background:#e1f4eb;border-color:var(--green)}
+.time.selected{background:var(--green);color:#ffffff;border-color:var(--green);box-shadow:0 6px 16px rgba(8,127,85,.28);transform:scale(1.03)}
+
+/* Summary Calm Card */
+.summary-ticket{
+  background:linear-gradient(135deg,#edf8f3,#e1f3eb);
+  border:1.5px solid #c5e7d7;
+  border-radius:20px;
+  padding:22px;
+  position:relative;
+}
+.summary-ticket h3{margin:0 0 14px;font-size:17px;color:var(--green-dark);display:flex;align-items:center;gap:8px}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.summary-row{background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:12px;font-size:12.5px;color:var(--muted);font-weight:600}
+.summary-row strong{display:block;color:var(--ink);font-size:13.5px;margin-top:2px}
+
+.modal-actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
+.modal-actions .outline{background:rgba(255,255,255,0.9);color:var(--ink-soft);border:1.5px solid #cce3d8;padding:12px 24px;border-radius:14px;font-weight:800}
+.modal-actions .outline:hover{background:#f3fbf7}
+
+/* Toast */
+.toast{position:fixed;bottom:25px;left:25px;background:#0d2f25;color:#ffffff;padding:14px 22px;border-radius:16px;z-index:300;transform:translateY(80px);opacity:0;transition:.35s;box-shadow:0 12px 30px rgba(0,0,0,.25);font-weight:700;font-size:14px;display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.2)}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* Drawer & Responsive */
+.drawer{position:fixed;inset:0;background:rgba(7,26,20,.5);backdrop-filter:blur(8px);z-index:150;opacity:0;visibility:hidden;transition:.3s}
+.drawer.show{opacity:1;visibility:visible}
+.drawer-panel{position:absolute;top:0;right:0;width:min(340px,85%);height:100%;background:#ffffff;padding:26px;transform:translateX(105%);transition:.35s;box-shadow:-15px 0 40px rgba(0,0,0,.15)}
+.drawer.show .drawer-panel{transform:translateX(0)}
+.drawer-links a{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;color:var(--ink);font-weight:700;font-size:15px;margin-bottom:4px}
+.drawer-links a:hover{background:var(--light);color:var(--green)}
+.drawer-links i{color:var(--green);width:24px}
+
+@media(max-width:1020px){
+  .service-card-single{flex:0 0 calc((100% - 22px) / 2);min-width:calc((100% - 22px) / 2)}
+  .cards{grid-template-columns:1fr 1fr}
+  .about-card,.map-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .menu-toggle{display:grid;place-items:center}
+  .navlinks,.header-search{display:none}
+  .hero{min-height:560px;background-position:70% center}
+  .hero-content{padding:45px 0}
+  .hero h1{font-size:32px}
+  .hero p{font-size:14px}
+  .service-card-single{flex:0 0 88%;min-width:88%}
+  .cards{grid-template-columns:1fr}
+  .formgrid,.summary-grid{grid-template-columns:1fr}
+  .times{grid-template-columns:repeat(3,1fr)}
+  .ad-banner{flex-direction:column;text-align:center;gap:20px;padding:28px 20px}
+  .ad-copy h3{font-size:24px}
+  .modal-box{padding:26px 18px}
+  .footer-grid{grid-template-columns:1fr}
+  .whatsapp-float span{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="public" id="publicSite">
+<header class="topbar">
+  <div class="container nav">
+    <button class="menu-toggle" onclick="toggleDrawer()" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
+    <a class="logo" href="#home"><span class="logo-mark"><i class="fa-solid fa-leaf"></i></span><span>NutriCare<small style="display:block;font-size:9px;color:var(--muted);font-weight:700;line-height:1">Nutrition & Wellness</small></span></a>
+    <nav class="navlinks">
+      <a class="active" href="#home" data-i18n="nav_home">الرئيسية</a>
+      <a href="#services-sec" data-i18n="nav_services">خدماتنا</a>
+      <a href="#about" data-i18n="nav_about">عن خديجة</a>
+      <a href="#courses" data-i18n="nav_courses">الدورات</a>
+      <a href="#articles" data-i18n="nav_articles">المقالات</a>
+      <a href="#location" data-i18n="nav_location">مقرنا</a>
+    </nav>
+    <div class="actions">
+      <div class="header-search"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" placeholder="ابحث هنا..." oninput="quickSearch(this.value)"></div>
+      <button class="lang-switch" id="langSwitch" onclick="toggleLanguage()">FR</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this)toggleDrawer()">
+  <div class="drawer-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px">
+      <a class="logo" href="#home" onclick="toggleDrawer()"><span class="logo-mark"><i class="fa-solid fa-leaf"></i></span>NutriCare</a>
+      <button onclick="toggleDrawer()" style="background:none;font-size:20px;color:var(--ink)"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="drawer-links">
+      <a href="#home" onclick="toggleDrawer()"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">الرئيسية</span></a>
+      <a href="#services-sec" onclick="toggleDrawer()"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="nav_services">خدماتنا</span></a>
+      <a href="#about" onclick="toggleDrawer()"><i class="fa-solid fa-user-doctor"></i> <span data-i18n="nav_about_full">عن خديجة بن علال</span></a>
+      <a href="#courses" onclick="toggleDrawer()"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="nav_courses">الدورات</span></a>
+      <a href="#articles" onclick="toggleDrawer()"><i class="fa-solid fa-newspaper"></i> <span data-i18n="nav_articles">المقالات</span></a>
+      <a href="#location" onclick="toggleDrawer()"><i class="fa-solid fa-location-dot"></i> <span data-i18n="nav_location">مقرنا</span></a>
+    </div>
+    <button class="primary" style="width:100%;margin-top:25px;justify-content:center" onclick="toggleDrawer();openBooking()"><span data-i18n="book_drawer">احجز موعدك الآن</span></button>
+  </div>
+</div>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <h1 data-i18n-html="hero_title">معاً نحو <span>حياة أكثر صحة</span></h1>
+    <p data-i18n-html="hero_text">احصل على خطة غذائية تناسب احتياجاتك وأهدافك مع <strong>الأخصائية خديجة بن علال</strong>، حضورياً أو عبر الإنترنت، مع متابعة دقيقة وخطط مخصصة.</p>
+    <div class="hero-buttons">
+      <button class="primary" onclick="openBooking()" data-i18n-html="book_now">احجز موعدك الآن <i class="fa-solid fa-arrow-left"></i></button>
+      <a class="outline" href="#services-sec" data-i18n="explore_services">إكتشف خدماتنا</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>+2500</strong><small data-i18n="beneficiaries">مستفيد ومتابع</small></div>
+      <div class="hero-stat"><strong>+5000</strong><small data-i18n="consultations_count">استشارة ناجحة</small></div>
+      <div class="hero-stat"><strong>4.9/5</strong><small data-i18n="rating">تقييم عالي للنتائج</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="auto-services"><div class="auto-track" id="serviceTrack">
+  <div class="auto-slide"><div class="container auto-slide-inner">
+    <div class="auto-service"><span class="auto-service-icon"><i class="fa-solid fa-user-doctor"></i></span><div><h4 data-i18n="svc_consult">استشارة غذائية</h4><p data-i18n="svc_consult_sub">حضورية أو عبر الإنترنت</p></div></div>
+    <div class="auto-service"><span class="auto-service-icon"><i class="fa-solid fa-clipboard-list"></i></span><div><h4 data-i18n="svc_plans">خطط مخصصة</h4><p data-i18n="svc_plans_sub">حسب هدفك واحتياجاتك</p></div></div>
+    <div class="auto-service"><span class="auto-service-icon"><i class="fa-solid fa-headset"></i></span><div><h4 data-i18n="svc_follow">متابعة مستمرة</h4><p data-i18n="svc_follow_sub">دعم وتقييم دوري</p></div></div>
+  </div></div>
+</div></section>
+
+<!-- Distinctive Slider Services: Single-Row, Modern Cards, Auto Slide 2s -->
+<section class="services-highlight" id="services-sec">
+  <div class="container">
+    <div class="section-head" style="display:flex;align-items:flex-end;justify-content:space-between">
+      <div>
+        <h2 data-i18n="services_title">خدماتنا المتخصصة</h2>
+        <p data-i18n="services_subtitle">حلول غذائية متكاملة ومصممة خصيصاً لترافقك نحو أسلوب حياة صحي ومستدام</p>
+      </div>
+      <div class="services-slider-nav" style="margin:0">
+        <button class="slider-arrow-btn" onclick="prevServiceSlide()" aria-label="السابق">◀</button>
+        <button class="slider-arrow-btn" onclick="nextServiceSlide()" aria-label="التالي">▶</button>
+      </div>
+    </div>
+
+    <div class="services-carousel-wrap" id="servicesCarouselWrap" onmouseenter="pauseServicesAuto()" onmouseleave="startServicesAuto()">
+      <div class="services-track" id="servicesTrack">
+        <!-- Service 1 -->
+        <article class="service-card-single">
+          <div class="sc-top">
+            <div class="sc-icon"><i class="fa-solid fa-user-doctor"></i></div>
+            <span class="sc-badge">فردي ومخصص</span>
+          </div>
+          <div class="sc-content">
+            <h3 data-i18n="sc1_title">استشارات غذائية فردية</h3>
+            <p data-i18n="sc1_desc">جلسات مباشرة مع الأخصائية خديجة لتحليل نمط حياتك، تشخيص التحديات ووضع خطة علاجية دقيقة.</p>
+          </div>
+          <div class="sc-action">
+            <a class="sc-link" href="javascript:void(0)" onclick="openBooking()"><span data-i18n="book_now_short">احجز استشارتك</span> <i class="fa-solid fa-arrow-left"></i></a>
+            <small style="color:var(--muted);font-weight:700">Online / حضوري</small>
+          </div>
+        </article>
+
+        <!-- Service 2 -->
+        <article class="service-card-single">
+          <div class="sc-top">
+            <div class="sc-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+            <span class="sc-badge">مرن ومتوازن</span>
+          </div>
+          <div class="sc-content">
+            <h3 data-i18n="sc2_title">برامج التغذية الشخصية</h3>
+            <p data-i18n="sc2_desc">جدول غذائي متكامل يناسب ميزانيتك، وجباتك المفضلة وساعات عملك دون حرمان أو تعقيد.</p>
+          </div>
+          <div class="sc-action">
+            <a class="sc-link" href="javascript:void(0)" onclick="openBooking()"><span data-i18n="discover_more">اطلب برنامجك</span> <i class="fa-solid fa-arrow-left"></i></a>
+            <small style="color:var(--muted);font-weight:700">تحديث دوري</small>
+          </div>
+        </article>
+
+        <!-- Service 3 -->
+        <article class="service-card-single">
+          <div class="sc-top">
+            <div class="sc-icon"><i class="fa-solid fa-weight-scale"></i></div>
+            <span class="sc-badge">نتائج دائمة</span>
+          </div>
+          <div class="sc-content">
+            <h3 data-i18n="sc3_title">إدارة وتعديل الوزن</h3>
+            <p data-i18n="sc3_desc">خسارة الدهون أو زيادة الكتلة العضلية بصورة صحية تضمن استقرار الوزن وتجنب انتكاسات الريجيم.</p>
+          </div>
+          <div class="sc-action">
+            <a class="sc-link" href="javascript:void(0)" onclick="openBooking()"><span data-i18n="discover_more">ابدأ الآن</span> <i class="fa-solid fa-arrow-left"></i></a>
+            <small style="color:var(--muted);font-weight:700">خطة ذكية</small>
+          </div>
+        </article>
+
+        <!-- Service 4 -->
+        <article class="service-card-single">
+          <div class="sc-top">
+            <div class="sc-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <span class="sc-badge">رعاية طبية</span>
+          </div>
+          <div class="sc-content">
+            <h3 data-i18n="sc4_title">التغذية العلاجية المتخصصة</h3>
+            <p data-i18n="sc4_desc">تنظيم غذائي داعم لمرضى السكري، مقاومة الإنسولين، اضطرابات القولون وضغط الدم بإشراف علمي.</p>
+          </div>
+          <div class="sc-action">
+            <a class="sc-link" href="javascript:void(0)" onclick="openBooking()"><span data-i18n="discover_more">تفاصيل الرعاية</span> <i class="fa-solid fa-arrow-left"></i></a>
+            <small style="color:var(--muted);font-weight:700">متابعة دقيقة</small>
+          </div>
+        </article>
+
+        <!-- Service 5 -->
+        <article class="service-card-single">
+          <div class="sc-top">
+            <div class="sc-icon"><i class="fa-solid fa-person-breastfeeding"></i></div>
+            <span class="sc-badge">للأم والطفل</span>
+          </div>
+          <div class="sc-content">
+            <h3 data-i18n="sc5_title">تغذية الحوامل والمرضعات</h3>
+            <p data-i18n="sc5_desc">عناية غذائية دقيقة لضمان صحة الأم والطفل، وتعزيز الرضاعة وتفادي النواقص الغذائية الحيوية.</p>
+          </div>
+          <div class="sc-action">
+            <a class="sc-link" href="javascript:void(0)" onclick="openBooking()"><span data-i18n="discover_more">احجزي الآن</span> <i class="fa-solid fa-arrow-left"></i></a>
+            <small style="color:var(--muted);font-weight:700">رعاية شاملة</small>
+          </div>
+        </article>
+
+        <!-- Service 6 -->
+        <article class="service-card-single">
+          <div class="sc-top">
+            <div class="sc-icon"><i class="fa-solid fa-comments"></i></div>
+            <span class="sc-badge">دعم مستمر</span>
+          </div>
+          <div class="sc-content">
+            <h3 data-i18n="sc6_title">المتابعة والتقييم الدوري</h3>
+            <p data-i18n="sc6_desc">مرافقة مستمرة عبر الواتساب والمنصة للإجابة عن أسئلتك، قياس التطور وتحفيزك للبقاء على المسار.</p>
+          </div>
+          <div class="sc-action">
+            <a class="sc-link" href="javascript:void(0)" onclick="openBooking()"><span data-i18n="discover_more">انضم للمتابعة</span> <i class="fa-solid fa-arrow-left"></i></a>
+            <small style="color:var(--muted);font-weight:700">دعم متواصل</small>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="slider-dots-line" id="servicesDots" style="justify-content:center;margin-top:16px"></div>
+  </div>
+</section>
+
+<!-- Ad Banner -->
+<section class="section" style="padding:40px 0"><div class="container">
+  <div class="ad-banner">
+    <div class="ad-copy">
+      <small data-i18n="offer_label">عرض موسمي لفترة محدودة</small>
+      <h3 data-i18n="offer_title">استفد من خصم 25% على الموعد الحضوري و30% على الموعد أونلاين</h3>
+      <p data-i18n="offer_text">ابدأ رحلتك الاستشارية مع الأخصائية خديجة بن علال بخطة واضحة تناسب أهدافك الحقيقية دون تردد.</p>
+    </div>
+    <div class="ad-cta-box">
+      <span class="ad-badge" data-i18n="offer_badge">خصم يصل إلى 30%</span><br>
+      <button class="primary" onclick="openBooking()" data-i18n="offer_cta">استفد من العرض الآن</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- About Section -->
+<section class="section" id="about"><div class="container">
+  <div class="about-card">
+    <div class="about-photo"></div>
+    <div class="about-text">
+      <small data-i18n="about_label">عن الأخصائية</small>
+      <h2>خديجة بن علال</h2>
+      <p data-i18n="about_text">أخصائية تغذية معتمدة، أعمل معك جنباً إلى جنب لتغيير نظرتك للطعام، التخلص من الحميات القاسية، وتبني عادات صحية تدوم مدى الحياة بناءً على أسس علمية واحتياجات جسمك الفردية.</p>
+      <div class="about-list">
+        <div><i class="fa-solid fa-circle-check"></i> <span data-i18n="about_inperson">استشارات حضورية بالعيادة</span></div>
+        <div><i class="fa-solid fa-circle-check"></i> <span data-i18n="about_online">استشارات ومتابعة أونلاين</span></div>
+        <div><i class="fa-solid fa-circle-check"></i> <span data-i18n="about_plans">خطط غذائية حسب الهدف</span></div>
+        <div><i class="fa-solid fa-circle-check"></i> <span data-i18n="about_courses">تكوينات وورشات تثقيفية</span></div>
+      </div>
+      <button class="primary" onclick="openBooking()" data-i18n="book_khadija">احجز استشارتك مع خديجة</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- Courses Section -->
+<section class="section" id="courses" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="container">
+  <div class="section-head" style="display:flex;align-items:flex-end;justify-content:space-between">
+    <div>
+      <h2 data-i18n="courses_title">الدورات التكوينية</h2>
+      <p data-i18n="courses_subtitle">اكتسب المعرفة الصحيحة لتغذية أسرتك بنفسك أو طور مهاراتك التخصصية</p>
+    </div>
+    <div class="course-controls">
+      <button class="course-arrow" id="coursePrev" onclick="moveCourse(-1)" aria-label="السابق">◀</button>
+      <button class="course-arrow" id="courseNext" onclick="moveCourse(1)" aria-label="التالي">▶</button>
+    </div>
+  </div>
+
+  <div class="course-carousel" id="courseCarousel"><div class="course-track" id="courseTrack">
+    <div class="course-slide" data-clone="true"><article class="card"><div class="card-img course-women-img3"><span class="tag" data-i18n="inperson">حضوري</span></div><div class="card-body"><div><h3 data-i18n="course3_title">تغذية الأطفال والأسرة</h3><p data-i18n="course3_text">أساليب عملية وذكية لبناء عادات غذائية صحية وسليمة داخل المنزل دون مقاومة.</p></div><button class="primary" onclick="registerCourse('course3')" data-i18n="register">سجل الآن</button></div></article></div>
+    <div class="course-slide"><article class="card"><div class="card-img course-women-img"><span class="tag" data-i18n="online">Online</span></div><div class="card-body"><div><h3 data-i18n="course1_title">أساسيات التغذية الصحية المتوازنة</h3><p data-i18n="course1_text">برنامج مبسط لفهم حساب السعرات واختيار المكونات وبناء أطباق صحية يومية.</p></div><button class="primary" onclick="registerCourse('course1')" data-i18n="register">سجل الآن</button></div></article></div>
+    <div class="course-slide"><article class="card"><div class="card-img course-women-img2"><span class="tag" data-i18n="inperson">حضوري</span></div><div class="card-body"><div><h3 data-i18n="course2_title">التغذية العلاجية والوقائية</h3><p data-i18n="course2_text">مبادئ التعامل الغذائي الوقائي مع الاضطرابات الهضمية والأيضية بإشراف علمي.</p></div><button class="primary" onclick="registerCourse('course2')" data-i18n="register">سجل الآن</button></div></article></div>
+    <div class="course-slide"><article class="card"><div class="card-img course-women-img3"><span class="tag" data-i18n="inperson">حضوري</span></div><div class="card-body"><div><h3 data-i18n="course3_title">تغذية الأطفال والأسرة</h3><p data-i18n="course3_text">أساليب عملية لبناء عادات غذائية صحية سليمة داخل الأسرة دون ضغط.</p></div><button class="primary" onclick="registerCourse('course3')" data-i18n="register">سجل الآن</button></div></article></div>
+    <div class="course-slide" data-clone="true"><article class="card"><div class="card-img course-women-img"><span class="tag" data-i18n="online">Online</span></div><div class="card-body"><div><h3 data-i18n="course1_title">أساسيات التغذية الصحية المتوازنة</h3><p data-i18n="course1_text">برنامج مبسط لفهم حساب السعرات واختيار المكونات وبناء عادات تدوم.</p></div><button class="primary" onclick="registerCourse('course1')" data-i18n="register">سجل الآن</button></div></article></div>
+  </div></div>
+  <div class="course-dots" id="courseDots"><span class="active"></span><span></span><span></span></div>
+</div></section>
+
+<!-- Articles Section -->
+<section class="section" id="articles"><div class="container">
+  <div class="section-head">
+    <div>
+      <h2 data-i18n="articles_title">أحدث الإرشادات والمقالات</h2>
+      <p data-i18n="articles_subtitle">محتوى علمي مبسط يساعدك على اتخاذ قرارات غذائية واعية كل يوم</p>
+    </div>
+  </div>
+  <div class="searchbox">
+    <input id="articleSearch" placeholder="ابحث في المقالات والمواضيع..." oninput="filterArticles()">
+    <button><i class="fa-solid fa-search"></i></button>
+  </div>
+  <div class="cards" id="articleGrid">
+    <article class="card article" data-title="كيف تبني طبقاً متوازناً"><div class="card-img article-img article1"></div><div class="card-body"><div><small style="color:var(--green-dark);font-weight:800">تغذية يومية</small><h3 style="margin-top:6px">كيف تبني طبقاً غذائياً متكاملاً؟</h3><p>دليل بسيط لتقسيم الكربوهيدرات والبروتينات والخضار دون الحاجة لميزان الطعام.</p></div><a href="javascript:void(0)" style="color:var(--green-dark);font-weight:800;display:inline-flex;align-items:center;gap:6px">اقرأ المقال الكامل ←</a></div></article>
+    <article class="card article" data-title="نصائح لإدارة الوزن"><div class="card-img article-img article2"></div><div class="card-body"><div><small style="color:var(--green-dark);font-weight:800">إدارة الوزن</small><h3 style="margin-top:6px">خطوات واقعية للتحكم بالوزن</h3><p>تعديلات سلوكية خفيفة تصنع فارقاً حقيقياً في ثبات الوزن والتخلص من الشراهة.</p></div><a href="javascript:void(0)" style="color:var(--green-dark);font-weight:800;display:inline-flex;align-items:center;gap:6px">اقرأ المقال الكامل ←</a></div></article>
+    <article class="card article" data-title="أهمية الترطيب والماء"><div class="card-img article-img article3"></div><div class="card-body"><div><small style="color:var(--green-dark);font-weight:800">صحة عامة</small><h3 style="margin-top:6px">أهمية شرب الماء وتنظيم الطاقة</h3><p>كيف يؤثر الترطيب الجيد على التركيز الذهني ومعدل الحرق ومستويات النشاط اليومي.</p></div><a href="javascript:void(0)" style="color:var(--green-dark);font-weight:800;display:inline-flex;align-items:center;gap:6px">اقرأ المقال الكامل ←</a></div></article>
+  </div>
+</div></section>
+
+<!-- Location Section -->
+<section class="section map-section" id="location"><div class="container">
+  <div class="section-head">
+    <div>
+      <h2 data-i18n="location_title">مقر العيادة والتواصل</h2>
+      <p data-i18n="location_subtitle">نرحب بكم في عيادتنا أو عبر الاستشارة الافتراضية أينما كنتم</p>
+    </div>
+  </div>
+  <div class="map-grid">
+    <div class="location-card">
+      <h2 style="font-size:22px;margin:0 0 15px" data-i18n="location_card_title">معلومات الزيارة</h2>
+      <div class="location-item"><i class="fa-solid fa-location-dot"></i><div><b data-i18n="address">العنوان</b><span data-i18n="address_value">الجزائر العاصمة — يرجى تأكيد الموعد لاستلام الإحداثيات الدقيقة</span></div></div>
+      <div class="location-item"><i class="fa-solid fa-clock"></i><div><b data-i18n="hours">ساعات العمل</b><span data-i18n="hours_value">السبت إلى الخميس: 09:00 - 18:00 (بموعد مسبق)</span></div></div>
+      <div class="location-item"><i class="fa-solid fa-phone"></i><div><b data-i18n="contact">الهاتف والواتساب</b><span data-i18n="contact_value">+213 (0) 550 00 00 00</span></div></div>
+      <button class="primary" style="width:100%;margin-top:15px;justify-content:center" onclick="openBooking()" data-i18n="book_inperson">احجز استشارة حضورية الآن</button>
+    </div>
+    <iframe class="map-frame" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=3.00%2C36.70%2C3.20%2C36.80&layer=mapnik&marker=36.7538%2C3.0588" title="خريطة العيادة"></iframe>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="section" style="padding-top:20px"><div class="container">
+  <div class="cta">
+    <div>
+      <h2 data-i18n="cta_title">صحتك تستحق أن تبدأ خطوتك اليوم</h2>
+      <p data-i18n="cta_text">احجز موعدك مع الأخصائية خديجة بن علال وتعرف على الخطة المثالية لجسدك.</p>
+      <button class="primary" onclick="openBooking()" data-i18n="cta_button">احجز استشارتك الآن</button>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-title">NutriCare</div>
+      <p>منصة ومركز متخصص للاستشارات التغذوية والبرامج التدريبية الموجهة لمساعدتك على الوصول لنمط حياة صحي ومستدام بكل هدوء وثقة.</p>
+      <div class="social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title" data-i18n="footer_services">الخدمات</div>
+      <p><a href="#services-sec">الاستشارات الغذائية</a><br><a href="#services-sec">الخطط المخصصة</a><br><a href="#courses">الدورات التكوينية</a><br><a href="#services-sec">المتابعة الدورية</a></p>
+    </div>
+    <div>
+      <div class="footer-title" data-i18n="footer_links">روابط سريعة</div>
+      <p><a href="#home">الرئيسية</a><br><a href="#about">عن الأخصائية خديجة</a><br><a href="#articles">المقالات والنصائح</a><br><a href="#location">مقرنا</a></p>
+    </div>
+    <div>
+      <div class="footer-title" data-i18n="footer_contact">التواصل والاستقبال</div>
+      <p>الهاتف: 00 00 00 550 (0) 213+<br>البريد: contact@nutricare.dz<br>الجزائر العاصمة</p>
+    </div>
+  </div>
+  <div class="copy" data-i18n="copyright">© 2026 NutriCare — الأخصائية خديجة بن علال. جميع الحقوق محفوظة.</div>
+</div></footer>
+
+<a class="whatsapp-float" href="https://wa.me/?text=Bonjour%20Khadija%2C%20je%20souhaite%20prendre%20un%20rendez-vous." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+  <span data-i18n="whatsapp_label">تواصل معنا عبر واتساب</span>
+</a>
+</div>
+
+<!-- Professional Glassmorphic Calm Booking Modal -->
+<div class="modal" id="bookingModal" onclick="if(event.target===this)closeModal('bookingModal')">
+  <div class="modal-box">
+    <button class="close-glass" onclick="closeModal('bookingModal')" aria-label="إغلاق">✕</button>
+
+    <div class="modal-header-calm">
+      <span class="badge-calm"><i class="fa-solid fa-seedling"></i> خطوة نحو عافيتك</span>
+      <h2 id="modalTitle">حجز موعد استشارة</h2>
+      <p id="modalSubtitle">املأ البيانات لنخصص لك الوقت والبرنامج الأنسب لاحتياجاتك</p>
+    </div>
+
+    <!-- Calm Steps Indicator -->
+    <div class="calm-steps">
+      <div class="calm-step-item active" id="cStepInd1"><span class="calm-step-num">1</span> <span data-i18n="step1_txt">الموعد</span></div>
+      <div class="calm-step-line"></div>
+      <div class="calm-step-item" id="cStepInd2"><span class="calm-step-num">2</span> <span data-i18n="step2_txt">معلوماتك</span></div>
+      <div class="calm-step-line"></div>
+      <div class="calm-step-item" id="cStepInd3"><span class="calm-step-num">3</span> <span data-i18n="step3_txt">التأكيد</span></div>
+    </div>
+
+    <!-- Step 1: Appointment Details -->
+    <div id="bookingStep1">
+      <div class="formgrid">
+        <div class="field">
+          <label><i class="fa-solid fa-video"></i> نوع الاستشارة</label>
+          <select id="appointmentType">
+            <option value="Online (عبر الإنترنت)">عبر الإنترنت (Online)</option>
+            <option value="حضوري (في العيادة)">حضوري في العيادة</option>
+          </select>
+        </div>
+        <div class="field">
+          <label><i class="fa-solid fa-list-check"></i> نوع الخدمة</label>
+          <select id="appointmentService">
+            <option value="استشارة غذائية شاملة">استشارة غذائية شاملة</option>
+            <option value="خطة غذائية مخصصة">خطة غذائية مخصصة</option>
+            <option value="جلسة متابعة دورية">جلسة متابعة دورية</option>
+            <option value="تغذية علاجية">تغذية علاجية متخصصة</option>
+          </select>
+        </div>
+        <div class="field">
+          <label><i class="fa-solid fa-user-doctor"></i> الأخصائية</label>
+          <input type="text" value="خديجة بن علال" readonly style="background:#eaf6f0;font-weight:700">
+        </div>
+        <div class="field">
+          <label><i class="fa-regular fa-calendar"></i> التاريخ المفضل</label>
+          <input type="date" id="dateInput">
+        </div>
+      </div>
+
+      <div class="times-head"><i class="fa-regular fa-clock"></i> اختر التوقيت المناسب لك:</div>
+      <div class="times" id="timesGrid"></div>
+    </div>
+
+    <!-- Step 2: Personal Information -->
+    <div id="bookingStep2" style="display:none">
+      <div class="formgrid">
+        <div class="field">
+          <label><i class="fa-regular fa-user"></i> الاسم واللقب الكامل</label>
+          <input id="nameInput" placeholder="مثال: مريم بوعلام">
+        </div>
+        <div class="field">
+          <label><i class="fa-solid fa-phone"></i> رقم الهاتف (واتساب)</label>
+          <input id="phoneInput" placeholder="05 / 06 / 07 xx xx xx">
+        </div>
+        <div class="field">
+          <label><i class="fa-regular fa-envelope"></i> البريد الإلكتروني</label>
+          <input type="email" id="emailInput" placeholder="name@example.com">
+        </div>
+        <div class="field">
+          <label><i class="fa-solid fa-bullseye"></i> الهدف الأساسي</label>
+          <select id="goalInput">
+            <option>خسارة وزن وحرق دهون</option>
+            <option>زيادة وزن أو كتلة عضلية</option>
+            <option>تنظيم سكر أو مقاومة إنسولين</option>
+            <option>علاج مشاكل الهضم والقولون</option>
+            <option>تحسين نمط الحياة العام</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" style="margin-top:14px">
+        <label><i class="fa-regular fa-comment-dots"></i> ملاحظات أو حالات صحية تود مشاركتها (اختياري)</label>
+        <textarea id="notesInput" placeholder="أخبرينا بإيجاز عن أي تحاليل أو أهداف خاصة بك..."></textarea>
+      </div>
+    </div>
+
+    <!-- Step 3: Calm Ticket Summary -->
+    <div id="bookingStep3" style="display:none">
+      <div class="summary-ticket">
+        <h3><i class="fa-solid fa-clipboard-check"></i> ملخص طلب الحجز المسبق</h3>
+        <div class="summary-grid">
+          <div class="summary-row">الأخصائية المشرفة<strong>خديجة بن علال</strong></div>
+          <div class="summary-row">نوع الحجز<strong id="sumType">—</strong></div>
+          <div class="summary-row">الخدمة المطلوبة<strong id="sumService">—</strong></div>
+          <div class="summary-row">التاريخ والتوقيت<strong id="sumDateTime">—</strong></div>
+          <div class="summary-row">صاحب الحجز<strong id="sumName">—</strong></div>
+          <div class="summary-row">رقم التواصل<strong id="sumPhone">—</strong></div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;font-weight:600">سيتم التواصل معك فوراً عبر الواتساب أو الهاتف لتأكيد حجزك وإرسال تفاصيل اللقاء.</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="modal-actions">
+      <button class="outline" id="backBtn" onclick="prevBooking()" style="visibility:hidden">السابق</button>
+      <button class="primary" id="nextBtn" onclick="nextBooking()">المتابعة <i class="fa-solid fa-arrow-left"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- Course Modal -->
+<div class="modal" id="courseModal" onclick="if(event.target===this)closeModal('courseModal')">
+  <div class="modal-box">
+    <button class="close-glass" onclick="closeModal('courseModal')">✕</button>
+    <div class="modal-header-calm">
+      <span class="badge-calm"><i class="fa-solid fa-graduation-cap"></i> التكوين والتطوير</span>
+      <h2>التسجيل في الدورة</h2>
+      <p id="courseName" style="color:var(--green);font-weight:800;font-size:15px;margin-top:6px"></p>
+    </div>
+    <div class="formgrid">
+      <div class="field"><label>الاسم الكامل</label><input placeholder="اكتب اسمك الكامل"></div>
+      <div class="field"><label>رقم الهاتف</label><input placeholder="05 / 06 / 07 xx xx xx"></div>
+      <div class="field"><label>البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+      <div class="field"><label>صيغة الحضور</label><select><option>Online (عن بعد)</option><option>حضوري بالمركز</option></select></div>
+    </div>
+    <button class="primary" style="width:100%;margin-top:24px;justify-content:center" onclick="submitCourse()">تأكيد وإرسال طلب التسجيل</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">تمت العملية بنجاح</span></div>
+
+<script>
+/* Translations with Updated "إكتشف خدماتنا" */
+const translations={
+  ar:{
+    nav_home:'الرئيسية',
+    nav_services:'خدماتنا',
+    nav_about:'عن خديجة',
+    nav_courses:'الدورات',
+    nav_articles:'المقالات',
+    nav_location:'مقرنا',
+    hero_title:'معاً نحو <span>حياة أكثر صحة</span>',
+    hero_text:'احصل على خطة غذائية تناسب احتياجاتك وأهدافك مع <strong>الأخصائية خديجة بن علال</strong>، حضورياً أو عبر الإنترنت، مع متابعة دقيقة وخطط مخصصة.',
+    book_now:'احجز موعدك الآن <i class="fa-solid fa-arrow-left"></i>',
+    explore_services:'إكتشف خدماتنا',
+    beneficiaries:'مستفيد ومتابع',
+    consultations_count:'استشارة ناجحة',
+    rating:'تقييم عالي للنتائج',
+    offer_label:'عرض موسمي لفترة محدودة',
+    offer_title:'استفد من خصم 25% على الموعد الحضوري و30% على الموعد أونلاين',
+    offer_text:'ابدأ رحلتك الاستشارية مع الأخصائية خديجة بن علال بخطة واضحة تناسب أهدافك الحقيقية دون تردد.',
+    offer_badge:'خصم يصل إلى 30%',
+    offer_cta:'استفد من العرض الآن',
+    services_title:'خدماتنا المتخصصة',
+    services_subtitle:'حلول غذائية متكاملة ومصممة خصيصاً لترافقك نحو أسلوب حياة صحي ومستدام',
+    book_now_short:'احجز استشارتك',
+    discover_more:'اكتشف المزيد',
+    about_label:'عن الأخصائية',
+    about_text:'أخصائية تغذية معتمدة، أعمل معك جنباً إلى جنب لتغيير نظرتك للطعام، التخلص من الحميات القاسية، وتبني عادات صحية تدوم مدى الحياة بناءً على أسس علمية واحتياجات جسمك الفردية.',
+    about_inperson:'استشارات حضورية بالعيادة',
+    about_online:'استشارات ومتابعة أونلاين',
+    about_plans:'خطط غذائية حسب الهدف',
+    about_courses:'تكوينات وورشات تثقيفية',
+    book_khadija:'احجز استشارتك مع خديجة',
+    courses_title:'الدورات التكوينية',
+    courses_subtitle:'اكتسب المعرفة الصحيحة لتغذية أسرتك بنفسك أو طور مهاراتك التخصصية',
+    online:'Online',
+    inperson:'حضوري',
+    course1_title:'أساسيات التغذية الصحية المتوازنة',
+    course1_text:'برنامج مبسط لفهم حساب السعرات واختيار المكونات وبناء أطباق صحية يومية.',
+    course2_title:'التغذية العلاجية والوقائية',
+    course2_text:'مبادئ التعامل الغذائي الوقائي مع الاضطرابات الهضمية والأيضية بإشراف علمي.',
+    course3_title:'تغذية الأطفال والأسرة',
+    course3_text:'أساليب عملية وذكية لبناء عادات غذائية صحية وسليمة داخل المنزل دون مقاومة.',
+    register:'سجل الآن',
+    whatsapp_label:'تواصل معنا عبر واتساب',
+    nav_about_full:'عن خديجة بن علال',
+    book_drawer:'احجز موعدك الآن',
+    svc_consult:'استشارة غذائية',
+    svc_consult_sub:'حضورية أو عبر الإنترنت',
+    svc_plans:'خطط مخصصة',
+    svc_plans_sub:'حسب هدفك واحتياجاتك',
+    svc_follow:'متابعة مستمرة',
+    svc_follow_sub:'دعم وتقييم دوري',
+    articles_title:'أحدث الإرشادات والمقالات',
+    articles_subtitle:'محتوى علمي مبسط يساعدك على اتخاذ قرارات غذائية واعية كل يوم',
+    location_title:'مقر العيادة والتواصل',
+    location_subtitle:'نرحب بكم في عيادتنا أو عبر الاستشارة الافتراضية أينما كنتم',
+    location_card_title:'معلومات الزيارة',
+    address:'العنوان',
+    address_value:'الجزائر العاصمة — يرجى تأكيد الموعد لاستلام الإحداثيات الدقيقة',
+    hours:'ساعات العمل',
+    hours_value:'السبت إلى الخميس: 09:00 - 18:00 (بموعد مسبق)',
+    contact:'الهاتف والواتساب',
+    contact_value:'+213 (0) 550 00 00 00',
+    book_inperson:'احجز استشارة حضورية الآن',
+    cta_title:'صحتك تستحق أن تبدأ خطوتك اليوم',
+    cta_text:'احجز موعدك مع الأخصائية خديجة بن علال وتعرف على الخطة المثالية لجسدك.',
+    cta_button:'احجز استشارتك الآن',
+    footer_services:'الخدمات',
+    footer_links:'روابط سريعة',
+    footer_contact:'التواصل والاستقبال',
+    copyright:'© 2026 NutriCare — الأخصائية خديجة بن علال. جميع الحقوق محفوظة.',
+    step1_txt:'الموعد',
+    step2_txt:'معلوماتك',
+    step3_txt:'التأكيد'
+  },
+  fr:{
+    nav_home:'Accueil',
+    nav_services:'Nos Services',
+    nav_about:'À propos',
+    nav_courses:'Formations',
+    nav_articles:'Articles',
+    nav_location:'Notre Cabinet',
+    hero_title:'Ensemble vers <span>une vie plus saine</span>',
+    hero_text:'Bénéficiez d’un plan alimentaire adapté à vos besoins avec <strong>la spécialiste Khadija Ben Allal</strong>, en présentiel ou en ligne.',
+    book_now:'Prendre rendez-vous <i class="fa-solid fa-arrow-right"></i>',
+    explore_services:'Découvrir nos services',
+    beneficiaries:'Bénéficiaires',
+    consultations_count:'Consultations',
+    rating:'Satisfaction clients',
+    offer_label:'OFFRE SPÉCIALE LIMITÉE',
+    offer_title:'Profitez de -25% en présentiel et -30% sur votre rendez-vous en ligne',
+    offer_text:'Initiez votre démarche nutritionnelle avec un accompagnement sur-mesure.',
+    offer_badge:'Jusqu’à -30%',
+    offer_cta:'Profiter de l’offre',
+    services_title:'Nos Services Spécialisés',
+    services_subtitle:'Des solutions nutritionnelles pensées pour un mode de vie durable et équilibré',
+    book_now_short:'Réserver',
+    discover_more:'En savoir plus',
+    about_label:'À propos de la spécialiste',
+    about_text:'Nutritionniste certifiée, je vous accompagne pour transformer durablement votre relation à l’alimentation sans frustration.',
+    about_inperson:'Consultations au cabinet',
+    about_online:'Consultations en ligne',
+    about_plans:'Plans personnalisés',
+    about_courses:'Formations et ateliers',
+    book_khadija:'Prendre RDV avec Khadija',
+    courses_title:'Nos Formations',
+    courses_subtitle:'Apprenez où que vous soyez et développez vos compétences nutritionnelles',
+    online:'En ligne',
+    inperson:'Présentiel',
+    course1_title:'Fondamentaux d’une alimentation saine',
+    course1_text:'Un programme clair pour composer des repas équilibrés chaque jour.',
+    course2_title:'Nutrition thérapeutique et préventive',
+    course2_text:'Principes d’accompagnement diététique pour différents troubles métaboliques.',
+    course3_title:'Nutrition de l’enfant et de la famille',
+    course3_text:'Des astuces pratiques pour instaurer de bonnes habitudes en famille.',
+    register:'S’inscrire',
+    whatsapp_label:'Contact WhatsApp',
+    nav_about_full:'À propos de Khadija Ben Allal',
+    book_drawer:'Prendre rendez-vous',
+    svc_consult:'Consultation nutritionnelle',
+    svc_consult_sub:'Présentiel ou En ligne',
+    svc_plans:'Plans personnalisés',
+    svc_plans_sub:'Selon vos objectifs',
+    svc_follow:'Suivi régulier',
+    svc_follow_sub:'Accompagnement continu',
+    articles_title:'Derniers Conseils Nutritionnels',
+    articles_subtitle:'Un contenu fiable et accessible pour faire de meilleurs choix',
+    location_title:'Notre Cabinet',
+    location_subtitle:'Nous vous accueillons au cabinet ou en consultation vidéo',
+    location_card_title:'Coordonnées de visite',
+    address:'Adresse',
+    address_value:'Alger — confirmation sur réservation',
+    hours:'Horaires',
+    hours_value:'Samedi au Jeudi : 09:00 - 18:00',
+    contact:'Téléphone & WhatsApp',
+    contact_value:'+213 (0) 550 00 00 00',
+    book_inperson:'Prendre RDV au cabinet',
+    cta_title:'Votre bien-être commence aujourd’hui',
+    cta_text:'Réservez votre séance avec Khadija Ben Allal dès maintenant.',
+    cta_button:'Prendre rendez-vous',
+    footer_services:'Services',
+    footer_links:'Liens rapides',
+    footer_contact:'Contact',
+    copyright:'© 2026 NutriCare — Khadija Ben Allal. Tous droits réservés.',
+    step1_txt:'Séance',
+    step2_txt:'Infos',
+    step3_txt:'Confirmation'
+  }
+};
+
+let currentLang = localStorage.getItem('nutricareLang') || 'ar';
+function applyLanguage(){
+  const t = translations[currentLang];
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  document.getElementById('langSwitch').textContent = currentLang === 'ar' ? 'FR' : 'AR';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    if(t[el.dataset.i18n] !== undefined) el.textContent = t[el.dataset.i18n];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    if(t[el.dataset.i18nHtml] !== undefined) el.innerHTML = t[el.dataset.i18nHtml];
+  });
+  localStorage.setItem('nutricareLang', currentLang);
+  updateServicesSliderPosition();
+}
+function toggleLanguage(){
+  currentLang = currentLang === 'ar' ? 'fr' : 'ar';
+  applyLanguage();
+}
+
+/* Single-Row Distinctive Services Carousel (Automatic every 2s) */
+let serviceIndex = 0;
+let servicesInterval = null;
+const servicesTrack = document.getElementById('servicesTrack');
+const totalServices = document.querySelectorAll('.service-card-single').length;
+
+function getVisibleCardsCount(){
+  if(window.innerWidth <= 720) return 1;
+  if(window.innerWidth <= 1020) return 2;
+  return 3;
+}
+
+function initServicesDots(){
+  const dotsContainer = document.getElementById('servicesDots');
+  dotsContainer.innerHTML = '';
+  const maxIdx = totalServices - getVisibleCardsCount();
+  for(let i=0; i <= maxIdx; i++){
+    const span = document.createElement('span');
+    if(i === 0) span.classList.add('active');
+    span.onclick = () => { serviceIndex = i; updateServicesSliderPosition(); };
+    dotsContainer.appendChild(span);
+  }
+}
+
+function updateServicesSliderPosition(){
+  const visible = getVisibleCardsCount();
+  const maxIndex = Math.max(0, totalServices - visible);
+  if(serviceIndex > maxIndex) serviceIndex = 0;
+  if(serviceIndex < 0) serviceIndex = maxIndex;
+
+  const cardWidth = document.querySelector('.service-card-single').getBoundingClientRect().width;
+  const gap = 22;
+  const moveAmount = (cardWidth + gap) * serviceIndex;
+  
+  servicesTrack.style.transform = `translateX(-${moveAmount}px)`;
+
+  const dots = document.querySelectorAll('#servicesDots span');
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === serviceIndex);
+  });
+}
+
+function nextServiceSlide(){
+  const maxIndex = Math.max(0, totalServices - getVisibleCardsCount());
+  serviceIndex = serviceIndex >= maxIndex ? 0 : serviceIndex + 1;
+  updateServicesSliderPosition();
+}
+
+function prevServiceSlide(){
+  const maxIndex = Math.max(0, totalServices - getVisibleCardsCount());
+  serviceIndex = serviceIndex <= 0 ? maxIndex : serviceIndex - 1;
+  updateServicesSliderPosition();
+}
+
+function startServicesAuto(){
+  if(!servicesInterval){
+    servicesInterval = setInterval(nextServiceSlide, 2000); /* 2 seconds auto slide as requested */
+  }
+}
+
+function pauseServicesAuto(){
+  clearInterval(servicesInterval);
+  servicesInterval = null;
+}
+
+window.addEventListener('resize', () => {
+  initServicesDots();
+  updateServicesSliderPosition();
+});
+
+/* Calm Glassmorphism Booking Modal Logic */
+const availableTimes = ['09:00', '09:45', '10:30', '11:15', '14:00', '14:45', '15:30', '16:15', '17:00', '17:45'];
+let selectedSlot = '';
+let currentBookingStep = 1;
+
+document.getElementById('dateInput').valueAsDate = new Date();
+
+function renderTimesGrid(){
+  const grid = document.getElementById('timesGrid');
+  grid.innerHTML = availableTimes.map(time => `
+    <button type="button" class="time ${selectedSlot === time ? 'selected' : ''}" onclick="pickTime('${time}')">
+      ${time}
+    </button>
+  `).join('');
+}
+
+function pickTime(time){
+  selectedSlot = time;
+  renderTimesGrid();
+}
+
+function openBooking(){
+  currentBookingStep = 1;
+  selectedSlot = '';
+  renderTimesGrid();
+  updateBookingStepView();
+  document.getElementById('bookingModal').classList.add('show');
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove('show');
+}
+
+function updateBookingStepView(){
+  document.getElementById('bookingStep1').style.display = currentBookingStep === 1 ? 'block' : 'none';
+  document.getElementById('bookingStep2').style.display = currentBookingStep === 2 ? 'block' : 'none';
+  document.getElementById('bookingStep3').style.display = currentBookingStep === 3 ? 'block' : 'none';
+
+  document.getElementById('cStepInd1').classList.toggle('active', currentBookingStep >= 1);
+  document.getElementById('cStepInd2').classList.toggle('active', currentBookingStep >= 2);
+  document.getElementById('cStepInd3').classList.toggle('active', currentBookingStep >= 3);
+
+  document.getElementById('backBtn').style.visibility = currentBookingStep === 1 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').innerHTML = currentBookingStep === 3 ? 
+    (currentLang==='ar'?'تأكيد الحجز النهائي <i class="fa-solid fa-check"></i>':'Confirmer la réservation') : 
+    (currentLang==='ar'?'المتابعة <i class="fa-solid fa-arrow-left"></i>':'Suivant');
+
+  if(currentBookingStep === 3){
+    document.getElementById('sumType').textContent = document.getElementById('appointmentType').value;
+    document.getElementById('sumService').textContent = document.getElementById('appointmentService').value;
+    document.getElementById('sumDateTime').textContent = `${document.getElementById('dateInput').value} في الساعة ${selectedSlot}`;
+    document.getElementById('sumName').textContent = document.getElementById('nameInput').value || '—';
+    document.getElementById('sumPhone').textContent = document.getElementById('phoneInput').value || '—';
+  }
+}
+
+function nextBooking(){
+  if(currentBookingStep === 1){
+    if(!selectedSlot){
+      toast('يرجى اختيار التوقيت المناسب أولاً');
+      return;
+    }
+    currentBookingStep = 2;
+    updateBookingStepView();
+    return;
+  }
+  if(currentBookingStep === 2){
+    const name = document.getElementById('nameInput').value.trim();
+    const phone = document.getElementById('phoneInput').value.trim();
+    if(!name || !phone){
+      toast('يرجى إدخال الاسم ورقم الهاتف للمتابعة');
+      return;
+    }
+    currentBookingStep = 3;
+    updateBookingStepView();
+    return;
+  }
+  if(currentBookingStep === 3){
+    closeModal('bookingModal');
+    toast('✓ تم تسجيل طلب موعدك بنجاح! سنتواصل معك قريباً');
+  }
+}
+
+function prevBooking(){
+  if(currentBookingStep > 1){
+    currentBookingStep--;
+    updateBookingStepView();
+  }
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* Course peek carousel */
+let courseIndex = 1;
+let courseAnimating = false;
+function renderCourse(instant=false){
+  const track = document.getElementById('courseTrack');
+  const carousel = document.getElementById('courseCarousel');
+  if(!track || !carousel) return;
+  const slides = track.querySelectorAll('.course-slide');
+  if(!slides.length) return;
+  const slideWidth = slides[0].getBoundingClientRect().width;
+  const gap = 20;
+  const offset = (carousel.clientWidth - slideWidth) / 2 - courseIndex * (slideWidth + gap);
+  track.style.transition = instant ? 'none' : 'transform .45s ease';
+  track.style.transform = `translateX(${offset}px)`;
+  slides.forEach((el, i) => el.classList.toggle('is-active', i === courseIndex));
+  document.querySelectorAll('#courseDots span').forEach((d, i) => d.classList.toggle('active', i === courseIndex - 1));
+}
+function moveCourse(step){
+  if(courseAnimating) return;
+  courseAnimating = true;
+  courseIndex += step;
+  renderCourse(false);
+  setTimeout(() => {
+    if(courseIndex === 0){ courseIndex = 3; renderCourse(true); }
+    else if(courseIndex === 4){ courseIndex = 1; renderCourse(true); }
+    courseAnimating = false;
+  }, 460);
+}
+
+function registerCourse(name){
+  const titles = {
+    course1:'أساسيات التغذية الصحية المتوازنة',
+    course2:'التغذية العلاجية والوقائية',
+    course3:'تغذية الأطفال والأسرة'
+  };
+  document.getElementById('courseName').textContent = titles[name] || name;
+  document.getElementById('courseModal').classList.add('show');
+}
+function submitCourse(){
+  closeModal('courseModal');
+  toast('✓ تم إرسال طلب الانضمام للدورة بنجاح');
+}
+
+function filterArticles(){
+  const q = document.getElementById('articleSearch').value.trim().toLowerCase();
+  document.querySelectorAll('.article').forEach(c => {
+    c.style.display = c.dataset.title.toLowerCase().includes(q) ? 'flex' : 'none';
+  });
+}
+function quickSearch(q){
+  if(q.trim().length > 1){
+    document.getElementById('articles').scrollIntoView({behavior:'smooth'});
+    document.getElementById('articleSearch').value = q;
+    filterArticles();
+  }
+}
+function toggleDrawer(){
+  document.getElementById('drawer').classList.toggle('show');
+}
+
+window.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal').forEach(m => m.classList.remove('show'));
+    document.getElementById('drawer').classList.remove('show');
+  }
+});
+
+// Initialization
+applyLanguage();
+initServicesDots();
+startServicesAuto();
+renderCourse(true);
+renderTimesGrid();
+</script>
+</body>
+</html>
